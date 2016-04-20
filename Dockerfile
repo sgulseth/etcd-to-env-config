@@ -13,6 +13,4 @@ ENV CONFIG_DIR /etc/app-envs
 
 ADD ./generate-config.sh /usr/bin/generate-config
 
-RUN generate-config
-
-CMD etcdctl exec-watch --recursive /config -- sh -c 'generate-config $(echo $ETCD_WATCH_KEY | cut -d "/" -f 3)'
+CMD generate-config && etcdctl exec-watch --recursive /config -- sh -c 'generate-config $(echo $ETCD_WATCH_KEY | cut -d "/" -f 3)'
