@@ -14,7 +14,8 @@ echo "--"
 IFS=$'\n'
 KEYS=$(etcdctl ls /config/$APP)
 
-FILE="/etc/app-envs/${APP}.env"
+CONFIG_DIR=${CONFIG_DIR:=`echo $PWD`}
+FILE="${CONFIG_DIR}/${APP}.env"
 
 echo -n "" > ${FILE}
 for KEY in ${KEYS[@]}

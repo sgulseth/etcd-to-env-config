@@ -9,6 +9,7 @@ RUN tar zxvf etcd.tar.gz
 RUN mv ./etcd-v0.4.6-linux-amd64/etcdctl /usr/bin/etcdctl
 
 RUN mkdir -p /etc/app-envs/
+ENV CONFIG_DIR /etc/app-envs
 
 ADD ./generate-config.sh /usr/bin/generate-config.sh
 
